@@ -10,8 +10,13 @@
 2.	Sao chép một reposity có sẵn trên github
 
 	git clone git@github.com:tranchau989/2015_De23_Mota2.git
+	
+	Note: Trong trường hợp không muốn sao chép (clone) một reposity có sẵn về ổ cứng,
+	có thể kết nối trực tiếp đến remote reposity bằng lệnh:
+	
+	git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
 
-3.	Tạo mới reposity
+3.	Tạo mới reposity ( Bỏ qua nếu đã làm bước 2 )
 
 	git init
 
@@ -23,7 +28,13 @@
 
 	git commit -m "Commit message"
 
-5.	Branch
+5.	Pushing
+	
+	Để lưu các thay đổi lên remote reposity qua một branch (xem mục 6), thực thi lệnh
+	
+	git push origin master
+
+6.	Branch
 Tạo một branch mới có tên là “bossynova” và sử dụng luôn branch đó.
 
  	git checkout -b bossynova
@@ -39,7 +50,7 @@ Chuyển sang branch master ( master là branch chính, mọi cập nhật thay 
 Delete branch
 	 git branch -d bossynova
 
-6.	Update và Merge
+7.	Update và Merge
 
 Update:
  
