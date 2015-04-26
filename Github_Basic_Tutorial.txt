@@ -7,7 +7,8 @@
 	Phần Title gõ tùy ý, phần key thì copy nôi dung của file ~/.ssh/id_rsa.pub
 	Chọn Add Key
 
-2.	Sao chép một reposity có sẵn trên githubgit clone git@github.com:tranchau989/2015_De23_Mota2.git
+2.	Sao chép một reposity có sẵn trên github
+
 	git clone git@github.com:tranchau989/2015_De23_Mota2.git
 
 3.	Tạo mới reposity
@@ -48,7 +49,7 @@ Merge một branch khác vào branch hiện hành ( branch được checkout)
 
 	git merge <branch> 
 
-
+Example:
 
 git init
 git add README.md
