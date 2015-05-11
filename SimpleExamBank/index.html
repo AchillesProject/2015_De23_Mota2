@@ -1,0 +1,78 @@
+<html>
+<head>
+<script src="./js/jquery-1.11.3.min.js"></script>
+<!--<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>-->
+<script src="./js/jquery.multi-select.js" type="text/javascript"></script>
+<link href="./css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./css/bootstrap.css">
+<style>
+	.custom-header {
+    text-align: center;
+    padding: 3px;
+    background: #2C3747;
+    color: #FFF;
+    font-family:'Titillium Web', sans-serif;
+    font-size: 14px;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$.getJSON("fetch-data.php", function(result){
+        /*$.each(result, function(key, value){
+		
+			alert(result.id.length);
+            /$.each(value, function (index, data) {
+				alert(data);
+			})/
+        });*/
+		for (i = 0; i < result.id.length; i++) { 
+			$('#my-select').append($('<option />').text(result.description[i] + (i+1) ).val(result.id[i]));
+			//alert(result.description[i]);
+		}
+		s.multiSelect('refresh');
+    });
+	
+}); 
+</script>
+
+  </head>
+  <body style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif">
+	<div class = "container">
+		<div class="row">
+			<div class="col-md-4">
+				<div id = "myQuestions">
+					<select multiple="multiple" id="my-select" name="my-select[]">
+						
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+				  <textarea class="form-control" rows="20" cols="50" id="question_display"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+   </body> 
+<script>
+var s = $('#my-select');
+s.multiSelect({
+  afterSelect: function(values){
+	
+	$.getJSON("fetch-question.php?id="+values, function(result){
+		$("#question_display").val(result.question+'\r\nA. '+result.sol_1+"\r\nB. "+
+			  result.sol_2+"\r\nC. "+result.sol_3+"\r\nD. "+
+			  result.sol_4);
+	});
+	//This is my statement one.&#13;&#10;This is my statement2
+  },
+  afterDeselect: function(values){
+    //alert("Deselect value: "+values);
+	//$("#question_display").val(content);
+  }
+});
+</script>
+
+</html>
