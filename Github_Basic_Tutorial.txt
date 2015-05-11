@@ -1,0 +1,70 @@
+﻿1.	Tạo SSH key pair (nếu dùng windows bỏ qua bước này)
+
+	ssh-keygen -t rsa -C "mymail@mail.example.com "	
+	Nhấn enter (chọn mặc định) các option sau khi gõ command trên.
+	Vào trang github.com
+	Vào mục setting ( hình bánh răng cưa ) => SSH Key => Add SSH Key
+	Phần Title gõ tùy ý, phần key thì copy nôi dung của file ~/.ssh/id_rsa.pub
+	Chọn Add Key
+
+2.	Tạo mới reposity
+
+	git init
+
+3.	Sao chép một reposity có sẵn trên github
+
+	git clone git@github.com:tranchau989/2015_De23_Mota2.git
+	
+	Note: Trong trường hợp không muốn sao chép (clone) một reposity có sẵn về ổ cứng,
+	có thể kết nối trực tiếp đến remote reposity bằng lệnh:
+	
+	git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
+
+4.	Add và commit
+
+	“git add <filename>”
+ 
+	hoặc “git add .” nếu muốn add cả thư mục hiện tại
+
+	git commit -m "Commit message"
+
+5.	Pushing
+	
+	Để lưu các thay đổi lên remote reposity qua một branch (xem mục 6), thực thi lệnh
+	
+	git push origin master
+
+6.	Branch
+Tạo một branch mới có tên là “bossynova” và sử dụng luôn branch đó.
+
+ 	git checkout -b bossynova
+
+Note: branch là trong suốt đối với các user khác trừ phi “push” branch lên reposity
+
+	git push origin <branch>
+
+Chuyển sang branch master ( master là branch chính, mọi cập nhật thay đổi đều thông qua branch này )
+
+ 	git checkout master
+
+Delete branch
+	 git branch -d bossynova
+
+7.	Update và Merge
+
+Update:
+ 
+	git pull
+
+Merge một branch khác vào branch hiện hành ( branch được checkout)
+
+	git merge <branch> 
+
+Example:
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
+git push -u origin master
+
