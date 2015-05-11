@@ -140,6 +140,22 @@ footer.top,footer.top a{color:#FFF}
 #discover .feature{margin-bottom:40px}
 #discover .btn-large,footer{display:none}}
 
-.input-field label {
-	color: #0D8DE4;
-}
+/* label color */
+.input-field label {color: #0D8DE4;}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {color: #0D8DE4;}
+.input-field input[type=password]:focus + label {color: #0D8DE4;}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {border-bottom: 1px solid #0D8DE4;box-shadow: 0 1px 0 0 #0D8DE4;}
+.input-field input[type=password]:focus {border-bottom: 1px solid #0D8DE4;box-shadow: 0 1px 0 0 #0D8DE4;}
+
+/* valid color */
+.input-field input[type=text].valid {border-bottom: 1px solid #0D8DE4;box-shadow: 0 1px 0 0 #0D8DE4;}
+
+/* invalid color */
+.input-field input[type=text].invalid {border-bottom: 1px solid #0D8DE4;box-shadow: 0 1px 0 0 #0D8DE4;}
+
+/* icon prefix focus color */
+.input-field .prefix.active {color: #0D8DE4;}
