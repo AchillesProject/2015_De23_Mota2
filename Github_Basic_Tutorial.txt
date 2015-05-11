@@ -58,7 +58,16 @@ Update:
 
 Merge một branch khác vào branch hiện hành ( branch được checkout)
 
-	git merge <branch> 
+	git merge <branch>
+	
+8. 	Xóa thư mục từ  git và local
+
+	git rm -r folder-name
+	git commit -m "Remove unnecessary folder"
+	git push origin branch-name
+	
+Nếu chỉ muốn xóa trên github ( giữ lại local file )
+	git rm -r --cached folder-name
 
 Example:
 
