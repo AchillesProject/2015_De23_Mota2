@@ -7,11 +7,11 @@
 	Phần Title gõ tùy ý, phần key thì copy nôi dung của file ~/.ssh/id_rsa.pub
 	Chọn Add Key
 
-2.	Tạo mới reposity
+2.	CREATE NEW REPOSITY:
 
 	git init
 
-3.	Sao chép một reposity có sẵn trên github
+3.	COPY REPOSITY FROM GITHUB TO YOUR LOCAL
 
 	git clone git@github.com:tranchau989/2015_De23_Mota2.git
 	
@@ -19,25 +19,25 @@
 	có thể kết nối trực tiếp đến remote reposity bằng lệnh:
 	
 	git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
+	(origin: remote name)
 
-4.	Add và commit
+4.	ADD AND COMMIT
 
-	“git add <filename>”
+	git add <filename>
  
 	hoặc “git add .” nếu muốn add cả thư mục hiện tại
 
-	git commit -m "Commit message"
+	git commit -m "<Commit message>"
 
-5.	Pushing
-	
-	Để lưu các thay đổi lên remote reposity qua một branch (xem mục 6), thực thi lệnh
+5.	PUSHING
+	To push your *local branch* to a *remote reposity*. (First remember to pull file to the branch - section 6)
 	
 	git push origin master
 
 6.	Branch
-Tạo một branch mới có tên là “bossynova” và sử dụng luôn branch đó.
+	Tạo một branch <branch_newname> và sử dụng luôn branch đó.
 
- 	git checkout -b bossynova
+ 	git checkout -b <branch_newname>
 
 Note: branch là trong suốt đối với các user khác trừ phi “push” branch lên reposity
 
@@ -47,8 +47,9 @@ Chuyển sang branch master ( master là branch chính, mọi cập nhật thay 
 
  	git checkout master
 
-Delete branch
-	 git branch -d bossynova
+Delete branch: first delete all the folders and files in the branch (in section 8) then type:
+
+	 git branch -d <branch>
 
 7.	Update và Merge
 
@@ -60,9 +61,27 @@ Merge một branch khác vào branch hiện hành ( branch được checkout)
 
 	git merge <branch>
 	
+About merging: 
+++ If you and your friends have made some changes in the same file "example.php".
+And then you try to merge your friend's branch into yours, there will be a merge conflict.
+Runing "git status" comment will tell you about the conflict.
+When you open the file (from local folder in your computer), you will see:
+
+<Common code>
+<<<<<<<<<<HEAD
+*your code*
+==============
+*your friend's code*
+>>>>>>>>> <your branch-name>
+
+Solve: 
+	+ Delete your friend's file in git and add your file
+	+ Agree with your friend's file and unchange file
+	+ Edited your code to merge with you friend's code by hand.
+	
 8. 	Xóa thư mục từ  git và local
 
-	git rm -r folder-name
+	git rm -r folder-name (add -f for forcing)
 	git commit -m "Remove unnecessary folder"
 	git push origin branch-name
 	
@@ -71,9 +90,18 @@ Nếu chỉ muốn xóa trên github ( giữ lại local file )
 
 Example:
 
++ Add new file "README.md" to master
 git init
 git add README.md
-git commit -m "first commit"
+git commit -m "add file"
 git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
 git push -u origin master
 
++ Add new folder "example" to master
+
+git init
+git add .\example
+git commit -m "add folder"
+git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
+git pull origin master
+git push -u origin master
