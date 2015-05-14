@@ -31,7 +31,8 @@ else
 		<link rel='stylesheet' type='text/css' href="../css/style.min.css"/>
 
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		
+		<script type="text/JavaScript" src="../scripts/sha512.js"></script> 
+        <script type="text/JavaScript" src="../scripts/forms.js"></script> 
 		<!-- Set body size-->
 		<script type="text/javascript">
 			//Initial load of page
@@ -95,24 +96,80 @@ A good teacher can change everything.</pre></h5>
 					</div>
 				
 			</div>
-
+			 <?php
+				if (isset($_GET['error'])) 
+				{
+				
+			?>	
+			
 			<div class="row center" style="width: 100%; background: #0D8DE4; height:100%">
 			    <form class="container col s4 offset-s4" 
-			    style="background:#FFF;margin-top: 2em; margin-bottom: 2em;">
-					<div class="input-field" >
-				        <input id="Username" id="inputMail" type="text" class="validate">
-				        <label for="Username">Username</label>
+						style="background:#FFF;margin-top: 2em; margin-bottom: 2em;" action='process_login.php' method='post' name='login_form'>
+					<div class="alert alert-dismissable alert-danger">
+						<strong>Error Logging in!</strong> <a href="javascript:void(0)" class="alert-link"> Try again</a>
+					</div>
+					<div class="form-group">
+						<div class="input-field" >
+							<input type="text" id="inputMail" type="text" class="validate" name="email">
+							<label for="Email">Email</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-field">
+							<input id="inputPassword" type="password" class="validate" name="password">
+							<label for="Password">Password</label>
+						</div>
+					</div>
+					<div class="form-group">
+			        <div class="center" style="margin-bottom: 2%">
+				        <button type="button"  value="Login" onclick="formhash(this.form, this.form.password)"  id="login-button" 
+				        class="btn waves-effect waves-light blue"><i class="mdi-file-cloud left"></i>Get Started</button>
 			        </div>
-			        <div class="input-field">
-				        <input id="Password" type="password" class="validate">
-				        <label for="Password">Password</label>
-			        </div>
-			         <div class="center" style="margin-bottom: 2%">
-				        <a href="http://materializecss.com/getting-started.html" id="login-button" 
-				        class="btn waves-effect waves-light blue"><i class="mdi-file-cloud left"></i>Get Started</a>
-			        </div>
+					</div>
 			    </form>
 			</div>
+			<?php		
+				
+				}
+				else
+				{
+					if ($sess->login_check($mysqli) == true) 
+					{
+						//echo '<p>Currently logging ' . $logged . ' as ' . htmlentities($_SESSION['username']) . '.</p>';
+						header('Location: protected_page.php');
+						//echo '<p>Do you want to <a href="logout.php">Log out</a>?</p>';
+					} 
+					else 
+					{
+			?>
+			<div class="row center" style="width: 100%; background: #0D8DE4; height:100%">
+			    <form class="container col s4 offset-s4" 
+						style="background:#FFF;margin-top: 2em; margin-bottom: 2em;" action='process_login.php' method='post' name='login_form'>
+					<div class="form-group">
+						<div class="input-field" >
+							<input type="text" id="inputMail" type="text" class="validate" name="email">
+							<label for="Email">Email</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-field">
+							<input id="inputPassword" type="password" class="validate" name="password">
+							<label for="Password">Password</label>
+						</div>
+					</div>
+					<div class="form-group">
+			        <div class="center" style="margin-bottom: 2%">
+				        <button type="button"  value="Login" onclick="formhash(this.form, this.form.password)"  id="login-button" 
+				        class="btn waves-effect waves-light blue"><i class="mdi-file-cloud left"></i>Get Started</button>
+			        </div>
+					</div>
+			    </form>
+			</div>
+			<?php
+				
+					}
+				}
+			?>
 		</div></section>
 
 		</div>
