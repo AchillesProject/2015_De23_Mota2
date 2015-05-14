@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    <title>Dashboard - Deep Blue Admin</title>
+
+      <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- you need to include the shieldui css and js assets in order for the charts to work -->
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/shieldui-all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/all.min.css" />
+    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
+
+
+      <link rel="stylesheet" type="text/css" href="css/shCore.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <style type="text/css" class="init">
+
+    div.dataTables_wrapper {
+        margin-bottom: 0em;
+    }
+
+    </style>
+    <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="js/shCore.js"></script>
+    <script type="text/javascript" language="javascript" src="js/demo.js"></script>
+    <script type="text/javascript" language="javascript" class="init">
+    $(document).ready(function() {
+    var table = $('table.display').dataTable();
+} );
+    </script>
+
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+
+
+
+
+
+</head>
+
+
+
+<body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Design View</a>
+                <a class="navbar-brand" href="index.html">Document View</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+   
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li class="dropdown messages-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">2</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">2 New Messages</li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><i class="fa fa-bell"></i></span>
+                                    <span class="message">Security alert</span>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><i class="fa fa-bell"></i></span>
+                                    <span class="message">Security alert</span>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
+                        </ul>
+                    </li>
+                     <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Steve Miller<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+
+
+            <div class="row">
+              <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Question
+                             
+                            
+                        </div>
+                        <div class="panel-body">
+                             <select >
+                                      <option value="">- Level -</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                </select>
+                                <select >
+                                      <option value="">-number question -</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                </select>
+
+                                  <input class="with-gap" name="group1" type="radio" id="test1" checked="checked" />
+                                  <label for="test1"></label>
+
+                                  <input class="with-gap" name="group1" type="radio" id="test2" />
+                                  <label for="test2"></label>
+
+                                  <input class="with-gap" name="group1" type="radio" id="test3"  />
+                                  <label for="test3"></label>
+                                  <br><br>
+                             <form role="form" id="formquestion">
+
+                                 <div class="form-group has-success">
+                                    <textarea class="form-control" rows="3" placeholder="Enter your question"></textarea>
+                                </div>
+
+                                 
+                                <div class="form-group input-group">
+                                
+                                    <span class="input-group-addon"><input type="checkbox" checked="checked"/></span>
+                                    <input type="text" class="form-control" placeholder="answer 1">
+                                </div>
+                                <div class="form-group input-group">
+                                
+                                    <span class="input-group-addon"><input type="checkbox"/></span>
+                                    <input type="text" class="form-control" placeholder="answer 1">
+                                </div>
+                                <div class="form-group input-group">
+                                
+                                    <span class="input-group-addon"><input type="checkbox"/></span>
+                                    <input type="text" class="form-control" placeholder="answer 1">
+                                </div>
+                               <div class="form-group input-group">
+                                
+                                    <span class="input-group-addon"><input type="checkbox"/></span>
+                                    <input type="text" class="form-control" placeholder="answer 1">
+                                </div>
+                                 <div class="form-group has-success">
+                                    <textarea class="form-control" rows="3" placeholder="Enter your Explanation"></textarea>
+                                </div>
+
+                            </form>
+     
+            <button type="button" class="btn btn-primary" id="btn2">Add answer</button>
+            <button type="button" class="btn btn-primary">Remove answer</button>
+            <button type="button" class="btn btn-primary" id='test-btn'>Add Question</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> List Question</h3>
+                        </div>
+            <table  class="display " width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr>
+                        <td>Jena Gaines</td>
+                        <td>London</td>
+                        <td>30</td>
+                        <td>$90,560</td>
+                    </tr>
+                    <tr>
+                        <td>Haley Kennedy</td>
+                        <td>London</td>
+                        <td>43</td>
+                        <td>$313,500</td>
+                    </tr>
+                    <tr>
+                        <td>Tatyana Fitzpatrick</td>
+                        <td>London</td>
+                        <td>19</td>
+                        <td>$385,750</td>
+                    </tr>
+                    <tr>
+                        <td>Michael Silva</td>
+                        <td>London</td>
+                        <td>66</td>
+                        <td>$198,500</td>
+                    </tr>
+                    <tr>
+                        <td>Bradley Greer</td>
+                        <td>London</td>
+                        <td>41</td>
+                        <td>$132,000</td>
+                    </tr>
+                    <tr>
+                        <td>Angelica Ramos</td>
+                        <td>London</td>
+                        <td>47</td>
+                        <td>$1,200,000</td>
+                    </tr>
+                    <tr>
+                        <td>Suki Burks</td>
+                        <td>London</td>
+                        <td>53</td>
+                        <td>$114,500</td>
+                    </tr>
+                    <tr>
+                        <td>Prescott Bartlett</td>
+                        <td>London</td>
+                        <td>27</td>
+                        <td>$145,000</td>
+                    </tr>
+                    <tr>
+                        <td>Timothy Mooney</td>
+                        <td>London</td>
+                        <td>37</td>
+                        <td>$136,200</td>
+                    </tr>
+                    <tr>
+                        <td>Bruno Nash</td>
+                        <td>London</td>
+                        <td>38</td>
+                        <td>$163,500</td>
+                    </tr>
+                    <tr>
+                        <td>Hermione Butler</td>
+                        <td>London</td>
+                        <td>47</td>
+                        <td>$356,250</td>
+                    </tr>
+                    <tr>
+                        <td>Lael Greer</td>
+                        <td>London</td>
+                        <td>21</td>
+                        <td>$103,500</td>
+                    </tr>
+                </tbody>
+            </table>
+              <button type="button" class="btn btn-primary">Edit Question</button>
+              <button type="button" class="btn btn-primary">Delete</button>
+
+                    </div>
+
+                </div>
+              
+            </div>
+        </div>
+    <!-- /#wrapper -->
+
+    <script type="text/javascript">
+
+    $("#test-btn").click(function(){
+        
+       //$('#myTable tr:last').after('<tr><td>BossyNova</td><td>Vietnam</td><td>22</td><td>$999,999</td></tr>');
+       var table = $('table.display').dataTable();
+       table.row.add( {
+        "Name":       "Bossy Nova",
+        "Office":   "Vietnam",
+        "Age":     "22",
+        "Salary": "$9,999"
+        } ).draw();
+      
+    });     
+   
+ 
+    </script>
+
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var performance = [12, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67],
+                visits = [123, 323, 143, 132, 274, 223, 143, 156, 223, 223],
+                budget = [23, 19, 11, 34, 42, 52, 35, 22, 37, 45, 55, 57],
+                sales = [11, 9, 31, 34, 42, 52, 35, 22, 37, 45, 55, 57],
+                targets = [17, 19, 5, 4, 62, 62, 75, 12, 47, 55, 65, 67],
+                avrg = [117, 119, 95, 114, 162, 162, 175, 112, 147, 155, 265, 167];
+
+            $("#shieldui-chart1").shieldChart({
+                primaryHeader: {
+                    text: "Visitors"
+                },
+                exportOptions: {
+                    image: false,
+                    print: false
+                },
+                dataSeries: [{
+                    seriesType: "area",
+                    collectionAlias: "Q Data",
+                    data: performance
+                }]
+            });
+
+            $("#shieldui-chart2").shieldChart({
+                primaryHeader: {
+                    text: "Login Data"
+                },
+                exportOptions: {
+                    image: false,
+                    print: false
+                },
+                dataSeries: [
+                    {
+                        seriesType: "polarbar",
+                        collectionAlias: "Logins",
+                        data: visits
+                    },
+                    {
+                        seriesType: "polarbar",
+                        collectionAlias: "Avg Visit Duration",
+                        data: avrg
+                    }
+                ]
+            });
+
+            $("#shieldui-chart3").shieldChart({
+                primaryHeader: {
+                    text: "Sales Data"
+                },
+                dataSeries: [
+                    {
+                        seriesType: "bar",
+                        collectionAlias: "Budget",
+                        data: budget
+                    },
+                    {
+                        seriesType: "bar",
+                        collectionAlias: "Sales",
+                        data: sales
+                    },
+                    {
+                        seriesType: "spline",
+                        collectionAlias: "Targets",
+                        data: targets
+                    }
+                ]
+            });
+
+            $("#shieldui-grid1").shieldGrid({
+                dataSource: {
+                    data: gridData
+                },
+                sorting: {
+                    multiple: true
+                },
+                paging: {
+                    pageSize: 7,
+                    pageLinksCount: 4
+                },
+                selection: {
+                    type: "row",
+                    multiple: true,
+                    toggle: false
+                },
+                columns: [
+                    { field: "id", width: "70px", title: "ID" },
+                    { field: "name", title: "Person Name" },
+                    { field: "company", title: "Company Name" },
+                    { field: "email", title: "Email Address", width: "270px" }
+                ]
+            });
+        });
+    </script>
+</body>
+<footer>
+ <div id="quocquoc">
+ </div>
+</footer>
+</html>
