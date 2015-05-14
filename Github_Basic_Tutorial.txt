@@ -11,7 +11,9 @@
 
 	git init
 
-3.	COPY REPOSITY FROM GITHUB TO YOUR LOCAL
+3.	COPY - CLONE
+
+	3.1 COPY REPOSITY FROM GITHUB TO YOUR LOCAL
 
 	git clone git@github.com:tranchau989/2015_De23_Mota2.git
 	
@@ -20,6 +22,11 @@
 	
 	git remote add origin git@github.com:tranchau989/2015_De23_Mota2.git
 	(origin: remote name)
+	
+	3.2 COPY A SPECIFIC Git BRANCH
+	
+	git clone -b backend git@github.com:tranchau989/2015_De23_Mota2.git
+	
 
 4.	ADD AND COMMIT
 
