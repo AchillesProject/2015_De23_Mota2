@@ -13,12 +13,23 @@
 		$ajax = array();
 		$i = 0;
 		while ($row = mysql_fetch_array($result)){
-			$ajax[$i]["id"] =  $row{'id'};
-			$ajax[$i]["question"] =json_decode($row{'question'},true);
+			/*$ajax[$i]["id"] =  ''+$row{'id'};
+			$ajax[$i]["question"] =json_decode($row{'question'},true);*/
+			$ajax[$i] = strval($row{'id'});
 			$i++;
 		}
 		$rand_keys = array_rand($ajax, 10);
-		echo json_encode($rand_keys);
+
+		$json = array();
+
+		/*for ($x = 0; $x < count($rand_keys); $x++) {
+    		$json[] = $ajax[$rand_keys[$x]];
+		}*/
+		foreach ($rand_keys as $value) {		 	
+		 	$json[] = $ajax[$value];
+		 } 
+
+		echo json_encode($json);
 	}
 	mysql_close($dbhandle);
 ?>

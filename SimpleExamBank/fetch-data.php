@@ -16,6 +16,7 @@
 		while ($row = mysql_fetch_array($result)){
 			$ajax["id"][$i] = $row{'id'};
 			$ajax["description"][$i] = json_decode($row{'question'},true)['description'];
+			$ajax["question"][$i] = json_decode($row{'question'},true)['question'];
 			$i++;
 		}
 		echo json_encode($ajax);

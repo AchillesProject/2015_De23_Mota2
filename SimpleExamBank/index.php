@@ -30,7 +30,7 @@ $(document).ready(function(){
 			})/
         });*/
 		for (i = 0; i < result.id.length; i++) { 
-			$('#my-select').append($('<option />').text(result.description[i] + (i+1) ).val(result.id[i]));
+			$('#my-select').append($('<option />').text(result.description[i] + (i+1) ).val(result.id[i]));//+result.question[i]));
 			//alert(result.description[i]);
 		}
 		s.multiSelect('refresh');
@@ -50,15 +50,20 @@ $(document).ready(function(){
 					</select>
 
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<button type="button" class="btn btn-success" id="auto-button">Auto Create</button>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<button type="button" class="btn btn-primary" id="random-button">Random Create</button>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<button type="button" class="btn btn-danger" id="remove-button">Remove All</button>
 						</div>
+
+						<div class="col-md-3">
+							<button type="button" class="btn btn-danger" id="print-button">Print All</button>
+						</div>
+
 					</div>
 
 				</div>
@@ -90,33 +95,64 @@ $(document).ready(function(){
 <script>
 var s = $('#my-select');
 s.multiSelect({
-  afterSelect: function(values){
-	
-	$.getJSON("fetch-question.php?id="+values, function(result){
-		$("#question_display").val(result.question+'\r\nA. '+result.sol_1+"\r\nB. "+
-			  result.sol_2+"\r\nC. "+result.sol_3+"\r\nD. "+
-			  result.sol_4);
-	});
-	//This is my statement one.&#13;&#10;This is my statement2
-  },
-  afterDeselect: function(values){
+
+	selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Search here...'>",
+  	selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Search here...'>",	
+	afterInit: function(ms){
+	    var that = this,
+	        $selectableSearch = that.$selectableUl.prev(),
+	        $selectionSearch = that.$selectionUl.prev(),
+	        selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+	        selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+	   
+	    //alert(that.$container.attr('id'));
+	    that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+	    .on('keydown', function(e){
+	      if (e.which === 40){
+	        that.$selectableUl.focus();
+	        return false;
+	      }
+	    });
+
+	    that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+	    .on('keydown', function(e){
+	      if (e.which == 40){
+	        that.$selectionUl.focus();
+	        return false;
+	      }
+	    });
+	},
+  	afterSelect: function(values){
+		/*console.log(values);
+		console.log(5);*/
+		$.getJSON("fetch-question.php?id="+values, function(result){
+			$("#question_display").val(result.question+'\r\nA. '+result.sol_1+"\r\nB. "+
+				  result.sol_2+"\r\nC. "+result.sol_3+"\r\nD. "+
+				  result.sol_4);
+		});
+		//This is my statement one.&#13;&#10;This is my statement2
+  	},
+
+  	afterDeselect: function(values){
     //alert("Deselect value: "+values);
 	//$("#question_display").val(content);
-  }
+  	}
 });
 </script>
 
 <script>
+	var string = "";
 	$('#random-button').click(function(){
 
 		$('#my-select').multiSelect('deselect_all');
 
 		$.getJSON("fetch-random.php", function(result){
-		  	for (i = 0; i < result.length; i++) {
-		  		$('#my-select').multiSelect('select', ''+result[i]);
-		  	};
-		  	/*var cars = ['1','2','3'];
-		  	$('#my-select').multiSelect('select', cars);*/
+
+		  	/*for (i = 0; i < result.length; i++) {
+		  		$('#my-select').multiSelect('select', ''+result[i].id);
+		  	};*/
+		  	string = result;
+		  	$('#my-select').multiSelect('select', result);
 		  	
 		  	$('#my-select').multiSelect('refresh');
 		})
@@ -125,6 +161,13 @@ s.multiSelect({
 	$('#remove-button').click(function(){
 		$('#my-select').multiSelect('deselect_all');
 		$('#my-select').multiSelect('refresh');
+	});
+
+	$('#print-button').click(function(){
+		window.open('print.php?id='+string);
+		//alert($('#my-select: selected').val());
+
+
 	});
 
 	$('#auto-button').click(function(){
